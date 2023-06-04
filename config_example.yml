@@ -1,0 +1,5 @@
+Config:
+  try_extract_from_exif: false # try to extract the DateTimeOriginal from EXIF
+  try_extract_from_file_name: true # if the EXIF DateTimeOriginal is not present, try to extract from the file name using the parsers
+  try_set_exif_if_not_present: false # try to set the EXIF DateTimeOriginal value if it's not present
+  log_level: info

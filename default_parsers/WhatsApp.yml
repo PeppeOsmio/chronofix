@@ -1,0 +1,64 @@
+Parsers:
+  WhatsappImageParser1:
+    Regex: ^(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})
+    YearIndex: 1
+    MonthIndex: 2
+    DayIndex: 3
+    HoursIndex: 4
+    MinutesIndex: 5
+    SecondsIndex: 6
+    MillisecondsIndex: -1
+  WhatsappImageParser2:
+    Regex: ^IMG_(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})
+    YearIndex: 1
+    MonthIndex: 2
+    DayIndex: 3
+    HoursIndex: 4
+    MinutesIndex: 5
+    SecondsIndex: 6
+    MillisecondsIndex: -1
+  WhatsappImageParser3:
+    Regex: ^IMG-(\d{4})(\d{2})(\d{2})-WA(\d{4})
+    YearIndex: 1
+    MonthIndex: 2
+    DayIndex: 3
+    HoursIndex: -1
+    MinutesIndex: -1
+    SecondsIndex: -1
+    MillisecondsIndex: -1
+  WhatsappImageParser4:
+    Regex: ^WhatsApp Image (\d{4})-(\d{2})-(\d{2}) at (\d{2}).(\d{2}).(\d{2})
+    YearIndex: 1
+    MonthIndex: 2
+    DayIndex: 3
+    HoursIndex: 4
+    MinutesIndex: 5
+    SecondsIndex: 6
+    MillisecondsIndex: -1
+  WhatsappImageParser5:
+    Regex: ^IMG_(\d{4})-(\d{2})-(\d{2})-(\d{2})-(\d{2})-(\d{2})
+    YearIndex: 1
+    MonthIndex: 2
+    DayIndex: 3
+    HoursIndex: 4
+    MinutesIndex: 5
+    SecondsIndex: 6
+    MillisecondsIndex: -1
+  WhatsappVideoParser1:
+    Regex: ^VID_(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})
+    YearIndex: 1
+    MonthIndex: 2
+    DayIndex: 3
+    HoursIndex: 4
+    MinutesIndex: 5
+    SecondsIndex: 6
+    MillisecondsIndex: -1
+  WhatsappVideoParser2:
+    Regex: ^VID-(\d{4})(\d{2})(\d{2})-WA(\d{4})
+    YearIndex: 1
+    MonthIndex: 2
+    DayIndex: 3
+    HoursIndex: -1
+    MinutesIndex: -1
+    SecondsIndex: -1
+    MillisecondsIndex: -1

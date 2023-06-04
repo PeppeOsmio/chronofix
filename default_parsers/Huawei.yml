@@ -1,0 +1,10 @@
+Parsers:
+  EMUI8SlowMotionVideo:
+    Regex: ^SL_MO_VID_(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})
+    YearIndex: 1
+    MonthIndex: 2
+    DayIndex: 3
+    HoursIndex: 4
+    MinutesIndex: 5
+    SecondsIndex: 6
+    MillisecondsIndex: -1
