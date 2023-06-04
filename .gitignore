@@ -2,4 +2,4 @@ src_files/
 logs/
 config.yml
 ignored_files/
-
+custom_parsers
