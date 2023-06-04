@@ -19,12 +19,12 @@ func main() {
 	// set modified time from the file name. Optionally, set the EXIF from the file name.
 	// Add support for more file formats
 	config_path := flag.String("config", "./config.yml", "Path of the config file for metadata_parser")
+	flag.Parse()
 	config, err := procedures.GetConfigFromYaml(*config_path)
 	if err != nil {
 		logrus.Error("Can't open config file " + *config_path + ": " + err.Error())
 		return
 	}
-	flag.Parse()
 	logsDir := "./logs"
 	os.Mkdir(logsDir, 0755)
 	logFileName := "metadata_restorer_" + time.Now().Format("20060102-150405") + ".log"
