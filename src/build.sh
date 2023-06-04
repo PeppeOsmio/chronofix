@@ -1,2 +1,2 @@
 #!/bin/bash
-go build -o ../metadata_restorer main.go
+go build -o ../metaparser main.go
