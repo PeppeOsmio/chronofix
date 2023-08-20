@@ -55,20 +55,13 @@ func main() {
 	exifSet := 0
 	succeeded := 0
 	failed := 0
-	srcDir := "./src_files"
-	defaultParsersDir := "./default_parsers"
-	customParsersDir := "./custom_parsers"
-	parsers, err := procedures.GetParsersFromDir(defaultParsersDir)
+	srcDir := config.MediaDir
+	parsersDir := "./parsers"
+	parsers, err := procedures.GetParsersFromDir(parsersDir)
 	if err != nil {
-		logrus.Error("Can't read default parsers from directory " + customParsersDir + ": " + err.Error())
+		logrus.Error("Can't read parsers from directory " + parsersDir + ": " + err.Error())
 		return
 	}
-	customParsers, err := procedures.GetParsersFromDir(customParsersDir)
-	if err != nil {
-		logrus.Error("Can't read custom parsers from directory " + customParsersDir + ": " + err.Error())
-		return
-	}
-	parsers = append(parsers, customParsers...)
 	waitGroup := sync.WaitGroup{}
 	filepath.WalkDir(srcDir, func(path string, dirEntry fs.DirEntry, err error) error {
 		waitGroup.Add(1)

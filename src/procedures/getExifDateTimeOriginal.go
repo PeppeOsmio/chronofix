@@ -2,6 +2,7 @@ package procedures
 
 import (
 	"errors"
+	"strconv"
 	"strings"
 	"time"
 
@@ -38,12 +39,18 @@ func GetExifDateTimeOriginal(path string) (dateTimeOriginal time.Time, err error
 		// try to get the TimeZoneOffset from EXIF. Otherwise use the system's timezone
 		location := time.Local
 		builderTag, err = exifIfd.FindTagWithName("OffsetTimeOriginal")
-		if err == nil {
+		if err != nil {
+			logrus.Debug(path + ": OffsetTimeOriginal not present")
+		} else {
 			value = builderTag.Value()
 			locationString, _ := strings.CutSuffix(string(value.Bytes()), "\x00")
-			logrus.Debug(path + ": found TimeZoneOffset " + locationString)
-		} else {
-			logrus.Debug(path + ": no TimeZoneOffset found")
+			logrus.Debug(path + ": found OffsetTimeOriginal " + locationString)
+			l, err := getLocationFromString(locationString)
+			if err != nil {
+				logrus.Debug(path + ": invalid OffsetTimeOriginal " + locationString + ": " + err.Error())
+			} else {
+				location = l
+			}
 		}
 		if value == nil {
 			return dateTimeOriginal, errors.New("DateTimeOriginal is not present")
@@ -58,4 +65,25 @@ func GetExifDateTimeOriginal(path string) (dateTimeOriginal time.Time, err error
 		return dateTimeOriginal, nil
 	}
 	return dateTimeOriginal, errors.New("format not supported")
+}
+
+func getLocationFromString(locationString string) (location *time.Location, err error) {
+	// Parse the time zone offset
+	offsetHoursString := locationString[0:3]   // from +02:00 to +02
+	offsetMinutesString := locationString[4:6] // from +02:00 to 00
+	offsetHours, err := strconv.Atoi(offsetHoursString)
+	if err != nil {
+		return nil, err
+	}
+	offsetMinutes, err := strconv.Atoi(offsetMinutesString)
+	if err != nil {
+		return nil, err
+	}
+	offsetSeconds := (offsetHours * 60 * 60) + (offsetMinutes * 60)
+	if err != nil {
+		return nil, err
+	}
+	// Create a fixed time zone with the specified offset
+	location = time.FixedZone(locationString, offsetSeconds)
+	return location, nil
 }
