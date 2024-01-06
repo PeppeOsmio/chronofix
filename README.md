@@ -1,4 +1,4 @@
-# MetaParser
+# Media Meta Parser
 
 ## Introduction
 
