@@ -2,4 +2,9 @@ media_files/
 logs/
 config.yml
 ignored_files/
-custom_parsers
+custom_parsers/
+
+# build
+mediametaparser*
+
+photos/

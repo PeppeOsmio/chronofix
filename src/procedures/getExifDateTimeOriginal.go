@@ -35,7 +35,7 @@ func GetExifDateTimeOriginal(path string) (dateTimeOriginal time.Time, err error
 		if value == nil {
 			return dateTimeOriginal, errors.New("DateTimeOriginal is not present")
 		}
-		dateTimeOriginalString, _ := strings.CutSuffix(string(value.Bytes()), "\x00")
+		dateTimeOriginalString := strings.TrimSuffix(string(value.Bytes()), "\x00")
 		// try to get the TimeZoneOffset from EXIF. Otherwise use the system's timezone
 		location := time.Local
 		builderTag, err = exifIfd.FindTagWithName("OffsetTimeOriginal")
@@ -43,7 +43,7 @@ func GetExifDateTimeOriginal(path string) (dateTimeOriginal time.Time, err error
 			logrus.Debug(path + ": OffsetTimeOriginal not present")
 		} else {
 			value = builderTag.Value()
-			locationString, _ := strings.CutSuffix(string(value.Bytes()), "\x00")
+			locationString := strings.TrimSuffix(string(value.Bytes()), "\x00")
 			logrus.Debug(path + ": found OffsetTimeOriginal " + locationString)
 			l, err := getLocationFromString(locationString)
 			if err != nil {
