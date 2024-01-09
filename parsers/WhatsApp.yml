@@ -1,6 +1,7 @@
 Parsers:
   WhatsappImageParser1:
-    Regex: ^(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})
+    # 20180320_003433.jpg
+    Regex: ^(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})\.
     YearIndex: 1
     MonthIndex: 2
     DayIndex: 3
