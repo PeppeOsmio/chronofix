@@ -6,5 +6,6 @@ custom_parsers/
 
 # build
 mediametaparser*
+main
 
 photos/
