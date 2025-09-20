@@ -1,8 +1,8 @@
-# Media Meta Parser
+# Chronofix
 
 ## Introduction
 
-Media Meta Parser is a Go project that can change the modified time of files and/or their EXIF DateTimeOriginal (the time when a picture, a video, etc... were taken) based on the name of the files.
+Chronofix is a Go project that can change the modified time of files and/or their EXIF DateTimeOriginal (the time when a picture, a video, etc... were taken) based on the name of the files.
 
 ## Get started
 
